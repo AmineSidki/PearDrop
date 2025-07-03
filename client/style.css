@@ -1,0 +1,70 @@
+.title{
+    font-size: 150px;
+    font-family:monospace;
+    font-weight: bold;
+    color:white;
+    letter-spacing: -10px;
+    text-align: center;
+}
+.subtitle{
+    font-size: 30px;
+    font-family:monospace;
+    color:black;
+    text-align: center;
+    background-color: yellow;
+}
+.share:hover{
+    box-shadow: 1px 1px 100px 10px orange;
+}
+.receive:hover{
+    box-shadow: 1px 1px 100px 10px green;
+}
+.navBar{
+    position: fixed;
+    background-image: linear-gradient(rgb(5, 36, 99) );
+    width: 100%;
+}
+.controlButton{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: white;
+    width: 200px;
+    height: 250px;
+    font-family: monospace;
+    font-size: 30px;
+    text-align:center;
+    border: 3px white solid;
+    border-radius: 12px;
+    margin-top: 500px;
+    margin-bottom: 50px;
+    padding: 5px;
+}
+.flexCol{
+    display: flex;
+    flex-direction: column;
+}
+.flexRow{
+    display: flex;
+    flex-direction: row;
+    gap: 300px;
+}
+.flexCenterSelf{
+    display: flex;
+    justify-self: center;
+}
+.flexCenterContent{
+    display: flex;
+    justify-items: center;
+}
+.circle{
+    border-radius: 100%;
+    border: 5px white solid;
+    height: 100px;
+    width: 100px;
+}
+.clickable:hover{
+    cursor: pointer;
+}
+body{
+    background-image: linear-gradient(rgb(5, 36, 99) , black);
+    background-attachment: fixed;
+}
