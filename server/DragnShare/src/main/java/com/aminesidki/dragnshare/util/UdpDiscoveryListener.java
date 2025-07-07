@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
-@Component
 public class UdpDiscoveryListener implements CommandLineRunner {
 
     @Override
