@@ -15,9 +15,8 @@ public class UdpDiscoveryListener implements CommandLineRunner {
 
     private void startListening(){
         try(DatagramSocket socket = new DatagramSocket(8888)){
-            byte[] buffer = new byte[10];
+            byte[] buffer = new byte[15];
             while(true){
-                System.out.println("Iteration !");
                 DatagramPacket packet = new DatagramPacket(buffer , buffer.length);
                 socket.receive(packet);
                 String msg = new String(packet.getData(), 0, packet.getLength());

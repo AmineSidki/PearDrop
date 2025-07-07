@@ -9,7 +9,6 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.nio.charset.StandardCharsets;
 
-@Component
 public class UdpDiscoveryWriter implements CommandLineRunner {
 
     @Override
@@ -31,7 +30,7 @@ public class UdpDiscoveryWriter implements CommandLineRunner {
         try(DatagramSocket socket = new DatagramSocket(8888)){
             String msg = getLocalIP();
             byte[] buffer = msg.getBytes(StandardCharsets.UTF_8);
-            InetAddress broadcast = InetAddress.getByName("255.255.255.255");
+            InetAddress broadcast = InetAddress.getByName("192.168.1.255");
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length ,broadcast, 8888);
 
             while(true){
