@@ -20,6 +20,7 @@ public class UdpDiscoveryWriter implements CommandLineRunner {
     private String getLocalIP(){
         try(DatagramSocket socket = new DatagramSocket()){
             socket.connect(InetAddress.getByName("8.8.8.8"),10002);
+            System.out.println("Current Address :" + socket.getLocalAddress().getHostAddress());
             return socket.getLocalAddress().getHostAddress();
         }catch(Exception e){
             return "127.0.0.1";
