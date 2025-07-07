@@ -7,4 +7,5 @@ And to start it on the sharing device , annotate the class UdpDiscoveryWriter wi
 
 Do not forget to change the IP address in the FileRequester Class to the IP of the sharing device and keep the port of course till I change it later.  
 I plan to make a cross-platform client using Flutter and Dart but for now , the server is the priority .  
-# I still have to look into making the server boot with the app but that is for another time .
+<br>
+**I still have to look into making the server boot with the app but that is for another time .**
