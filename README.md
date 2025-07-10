@@ -9,7 +9,7 @@ Do not forget to change the IP address in the FileRequester Class to the IP of t
 I plan to make a cross-platform client using Flutter and Dart but for now , the server is the priority .  
 <br>
 ## Architecture For PC
-![alt text](img/architecture.png)
+![alt text](img/Architecture.png)
 <br>
 This is more or less the same thing I will implement for mobile , but given how I cannot start a Spring Boot server on android unless it is rooted (so much for freedom), I will have to writean HTTP server in dart to interact with the spring boot one.   
 
