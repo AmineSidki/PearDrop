@@ -7,17 +7,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-@Component
 public class FileRequester implements CommandLineRunner {
+    private String IP;
+
+    public FileRequester(String IP){
+        this.IP = IP;
+    }
 
     @Override
     public void run(String... args) throws Exception {
-        new Thread(()->resRequester("192.168.1.83:8080")).start();
+        new Thread(()->resRequester(IP)).start();
     }
 
     private void resRequester(String IP){
         try{
-            URL url = new URL( "http://" + IP + "/file/msg");
+            URL url = new URL( "http://" + IP + ":8080/file/msg");
             System.out.println("not yet !");
             HttpURLConnection con = (HttpURLConnection) url.openConnection() ;
             con.setRequestMethod("GET");
