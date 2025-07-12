@@ -1,7 +1,6 @@
 package com.aminesidki.dragnshare.util;
 
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -21,8 +20,7 @@ public class FileRequester implements CommandLineRunner {
 
     private void resRequester(String IP){
         try{
-            URL url = new URL( "http://" + IP + ":8080/file/msg");
-            System.out.println("not yet !");
+            URL url = new URL( "http://" + IP + ":8080/share/file/msg");
             HttpURLConnection con = (HttpURLConnection) url.openConnection() ;
             con.setRequestMethod("GET");
 

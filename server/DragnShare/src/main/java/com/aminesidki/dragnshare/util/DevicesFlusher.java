@@ -18,16 +18,18 @@ public class DevicesFlusher implements CommandLineRunner {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-        }).run();
+        }).start();
     }
 
     private synchronized void flush() throws InterruptedException {
         while (true) {
             if(devices.isEmpty()){
+                System.out.println("Device List Empty.");
                 wait();
             }
-            Thread.sleep(3000);
+            Thread.sleep(6000);
             for (String s : devices) {
+                System.out.println("removed " + s);
                 devices.remove(s);
             }
         }
