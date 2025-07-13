@@ -1,0 +1,5 @@
+
+module network_info_plus.Swift {
+  header "network_info_plus-Swift.h"
+  requires objc
+}

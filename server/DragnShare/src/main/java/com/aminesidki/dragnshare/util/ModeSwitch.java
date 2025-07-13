@@ -1,11 +1,12 @@
 package com.aminesidki.dragnshare.util;
 
+import com.aminesidki.dragnshare.controller.ReceiveController;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class ModeSwitch implements CommandLineRunner {
@@ -18,8 +19,11 @@ public class ModeSwitch implements CommandLineRunner {
         if(mode.equalsIgnoreCase("s")){
             new UdpDiscoveryWriter().run();
         }else if(mode.equalsIgnoreCase("r")){
-            List<String> devices = new ArrayList<>();
-            new UdpDiscoveryListener(devices).run();
+            Set<String> devices = new HashSet<>();
+            ReceiveController.devices = devices;
+            DevicesManager manager = new DevicesManager(devices);
+            new UdpDiscoveryListener(manager).run();
+            new DevicesFlusher(manager).run();
         }else{
             System.err.println("Unknown mode: " + mode);
             System.exit(1);
