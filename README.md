@@ -1,10 +1,23 @@
-# PearDrop (initially Drag-nShare)
-A nearby sharing app designed to unify airdrop users from the apple ecosystem with whatever they're using down in the Android one .
+# PearDrop
+![spring-boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white)
+![flutter](https://img.shields.io/badge/Flutter-00AAFF?style=for-the-badge&logo=Flutter&logoColor=white)
+![dart](https://img.shields.io/badge/Dart-007FFF?style=for-the-badge&logo=Dart&logoColor=white)
 
+<p align="center">
+  "A nearby file-sharing app ."
+</p>
 
-To start the server in :   
-- **Sharing Mode** : ```./mvnw spring-boot:run -Dspring-boot.run.arguments="--mode=s"```
-- **Receiving Mode** : ```./mvnw spring-boot:run -Dspring-boot.run.arguments="--mode=r"```
+<a href="https://github.com/AmineSidki/PearDrop/graphs/contributors">
+  <p align="center">
+  <img src="https://contrib.rocks/image?repo=AmineSidki/PearDrop" /><br>
+    AmineSidki
+  </p>
+</a>
+
+>[!TIP]
+>To start the server in :   
+>- **Sharing Mode** : ```./mvnw spring-boot:run -Dspring-boot.run.arguments="--mode=s"```
+>- **Receiving Mode** : ```./mvnw spring-boot:run -Dspring-boot.run.arguments="--mode=r"```
 
 ## Architecture For PC   
 <img src="img/Architecture.png/">
