@@ -19,7 +19,6 @@ class defaultDeviceContainer extends State<DevicesContainer> {
   Column col = Column();
 
   @override
-  @override
   void initState() {
     super.initState();
 
@@ -51,7 +50,7 @@ class defaultDeviceContainer extends State<DevicesContainer> {
 
   @override
   void dispose() {
-    periodicTimer?.cancel(); // ✅ cancel timer to avoid memory leaks
+    periodicTimer?.cancel(); 
     super.dispose();
   }
 
@@ -63,9 +62,17 @@ class defaultDeviceContainer extends State<DevicesContainer> {
 
 final info = NetworkInfo();
 
+Future<void> askForFile(ip, s) async {
+  try {
+    final url = Uri.parse('http://$ip:8080/receive/$s');
+    final response = await http.post(url);
+    print(response.body);
+  } catch (err) {}
+}
+
 Future<Column> callLocalServer(Column col) async {
   final info = NetworkInfo();
-  final ip = await info.getWifiIP(); // 👈 await is required
+  final ip = await info.getWifiIP();
 
   try {
     final url = Uri.parse('http://$ip:8080/receive/devices');
@@ -79,9 +86,7 @@ Future<Column> callLocalServer(Column col) async {
       print(s);
       devicesButtons.add(
         GestureDetector(
-          onTap: (){
-            
-          },
+          onTap: ()=>askForFile(ip, s),
           child: Container(
             margin: EdgeInsets.only(left: 19, top: 19),
             child: Row(

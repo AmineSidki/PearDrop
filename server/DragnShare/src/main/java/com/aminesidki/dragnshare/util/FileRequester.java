@@ -8,9 +8,11 @@ import java.util.Scanner;
 
 public class FileRequester implements CommandLineRunner {
     private String IP;
+    private FileMonitor monitor;
 
-    public FileRequester(String IP){
+    public FileRequester(String IP , FileMonitor monitor){
         this.IP = IP;
+        this.monitor = monitor;
     }
 
     @Override
@@ -31,6 +33,7 @@ public class FileRequester implements CommandLineRunner {
             while(scanner.hasNext()){
                 response.append(scanner.nextLine());
             }
+            monitor.setFile(response.toString());
             System.out.println(response);
         }catch (Exception e){
             e.printStackTrace();

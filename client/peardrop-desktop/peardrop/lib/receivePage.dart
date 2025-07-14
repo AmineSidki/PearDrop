@@ -7,8 +7,7 @@ class Receivepage extends StatefulWidget {
 }
 
 class defaultState extends State<Receivepage> {
-
-  
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -20,7 +20,9 @@ public class ModeSwitch implements CommandLineRunner {
             new UdpDiscoveryWriter().run();
         }else if(mode.equalsIgnoreCase("r")){
             Set<String> devices = new HashSet<>();
+            FileMonitor monitor = new FileMonitor();
             ReceiveController.devices = devices;
+            ReceiveController.file = monitor;
             DevicesManager manager = new DevicesManager(devices);
             new UdpDiscoveryListener(manager).run();
             new DevicesFlusher(manager).run();
