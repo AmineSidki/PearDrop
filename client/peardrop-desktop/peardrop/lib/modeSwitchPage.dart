@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:peardrop/receivePage.dart';
+import 'package:peardrop/sharePage.dart';
 
 class ModeSwitchPage extends StatelessWidget {
   @override
@@ -94,6 +95,12 @@ Widget _modeSwitchPage(context) {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Sharepage()),
+                  );
+                },
                 child: Container(
                   padding: EdgeInsets.only(top: 50),
                   height: 302,

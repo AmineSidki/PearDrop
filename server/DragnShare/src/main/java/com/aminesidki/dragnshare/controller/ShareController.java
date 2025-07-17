@@ -1,14 +1,23 @@
 package com.aminesidki.dragnshare.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.aminesidki.dragnshare.DTO.FileDTO;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("/share/file")
 public class ShareController{
+    static FileDTO file;
+
     @GetMapping("/msg")
     public String helloMessage(){
         return "Hello dude !";
+    }
+
+    @PostMapping("/receive")
+    public void receiveFromClient(@RequestBody FileDTO incoming){
+        System.out.println("reached !");
+        file = incoming;
+        System.out.println(incoming);
     }
 }
