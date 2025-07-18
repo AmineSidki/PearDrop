@@ -1,5 +1,7 @@
 package com.aminesidki.dragnshare.util;
 
+import com.aminesidki.dragnshare.DTO.FileDTO;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.CommandLineRunner;
 
 import java.net.HttpURLConnection;
@@ -22,7 +24,7 @@ public class FileRequester implements CommandLineRunner {
 
     private void resRequester(String IP){
         try{
-            URL url = new URL( "http://" + IP + ":8080/share/file/msg");
+            URL url = new URL( "http://" + IP + ":8080/share/file/");
             HttpURLConnection con = (HttpURLConnection) url.openConnection() ;
             con.setRequestMethod("GET");
 
@@ -33,7 +35,8 @@ public class FileRequester implements CommandLineRunner {
             while(scanner.hasNext()){
                 response.append(scanner.nextLine());
             }
-            monitor.setFile(response.toString());
+            ObjectMapper mapper = new ObjectMapper();
+            monitor.setFile(mapper.readValue(response.toString() , FileDTO.class));
             System.out.println(response);
         }catch (Exception e){
             e.printStackTrace();

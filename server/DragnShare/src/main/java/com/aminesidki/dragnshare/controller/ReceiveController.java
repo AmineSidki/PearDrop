@@ -1,5 +1,6 @@
 package com.aminesidki.dragnshare.controller;
 
+import com.aminesidki.dragnshare.DTO.FileDTO;
 import com.aminesidki.dragnshare.util.FileMonitor;
 import com.aminesidki.dragnshare.util.FileRequester;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ public class ReceiveController {
     public static FileMonitor file;
 
     @PostMapping("/{IP}")
-    public String receiveFile(@PathVariable String IP) throws Exception {
+    public FileDTO receiveFile(@PathVariable String IP) throws Exception {
         new FileRequester(IP , file).run();
         return file.getFile();
     }

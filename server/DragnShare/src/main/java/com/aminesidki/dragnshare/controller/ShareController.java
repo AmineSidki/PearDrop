@@ -20,4 +20,9 @@ public class ShareController{
         file = incoming;
         System.out.println(incoming);
     }
+
+    @GetMapping("/")
+    public FileDTO sendFile(){
+        return file;
+    }
 }

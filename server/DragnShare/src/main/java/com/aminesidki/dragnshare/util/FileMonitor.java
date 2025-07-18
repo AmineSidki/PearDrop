@@ -1,9 +1,11 @@
 package com.aminesidki.dragnshare.util;
 
-public class FileMonitor {
-    private String file = null;
+import com.aminesidki.dragnshare.DTO.FileDTO;
 
-    public synchronized void setFile(String file) throws InterruptedException {
+public class FileMonitor {
+    private FileDTO file = null;
+
+    public synchronized void setFile(FileDTO file) throws InterruptedException {
         if(this.file != null){
             System.out.println("file is not null !");
             wait();
@@ -14,12 +16,12 @@ public class FileMonitor {
         notify();
     }
 
-    public synchronized String getFile() throws InterruptedException {
+    public synchronized FileDTO getFile() throws InterruptedException {
         if(file == null)
         {
             wait();
         }
-        String tmp = file ;
+        FileDTO tmp = file ;
         file = null;
         notify();
         return tmp;
