@@ -17,6 +17,7 @@ class _sharePage extends State<Sharepage> {
   String text = "No files";
   bool isFilePresent = false;
   dynamic incoming;
+  dynamic fileName;
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +57,7 @@ class _sharePage extends State<Sharepage> {
                     if (details.files.length == 1) {
                       isFilePresent = true;
                       incoming = await details.files.elementAt(0).readAsBytes();
+                      fileName = details.files.elementAt(0).name;
                       setState(() {
                         text = "Got File !\n📦";
                       });
@@ -97,7 +99,7 @@ class _sharePage extends State<Sharepage> {
                 GestureDetector(
                   onTap: () {
                     if (isFilePresent) {
-                      postRequest("fileBytes", incoming);
+                      postRequest({"fileBytes": incoming,"fileName":fileName});
                     }
                   },
                   child: Container(
@@ -128,14 +130,14 @@ class _sharePage extends State<Sharepage> {
   }
 }
 
-Future<void> postRequest(String objectName, object) async {
+Future<void> postRequest(dynamic jsonMap) async {
   final ip = await info.getWifiIP();
   try {
     final url = Uri.parse('http://$ip:8080/share/file/receive');
     final response = await http.post(
       headers: {'Content-Type': 'application/json'},
       url,
-      body: json.encode({objectName:object}),
+      body: json.encode(jsonMap),
     );
     print(response.statusCode);
   } catch (err) {

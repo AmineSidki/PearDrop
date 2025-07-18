@@ -1,12 +1,34 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'modeSwitchPage.dart';
 
 class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    execGetJarPath();
     return _landingPage(context);
   }
+}
+
+void execGetJarPath() async {
+  print(await getJarPath());
+}
+
+Future<String> getJarPath() async {
+  final appDir = await getApplicationDocumentsDirectory();
+  final jarFile = File('${appDir.path}/peardropServer.jar');
+
+  if (!await jarFile.exists()) {
+    final byteData = await rootBundle.load('assets/peardropServer.jar');
+    jarFile.create();
+    jarFile.writeAsBytes(byteData.buffer.asInt8List());
+  }
+
+  return jarFile.path;
 }
 
 Widget _landingPage(context) {
@@ -69,7 +91,19 @@ Widget _landingPage(context) {
               width: 343,
 
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 81, 169, 37),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromARGB(57, 0, 0, 0),
+                    blurRadius: 10,
+                    offset: Offset.fromDirection(1.57, 5.0),
+                  ),
+                ],
+                gradient: LinearGradient(
+                  colors: [
+                    Color.fromARGB(255, 81, 169, 37),
+                    Color.fromARGB(255, 85, 255, 0),
+                  ],
+                ),
                 borderRadius: BorderRadius.all(Radius.circular(12)),
               ),
               margin: EdgeInsets.only(left: 12, right: 12, top: 57, bottom: 20),

@@ -36,6 +36,7 @@ public class FileRequester implements CommandLineRunner {
                 response.append(scanner.nextLine());
             }
             ObjectMapper mapper = new ObjectMapper();
+            System.out.println("response :  "  + response);
             monitor.setFile(mapper.readValue(response.toString() , FileDTO.class));
             System.out.println(response);
         }catch (Exception e){

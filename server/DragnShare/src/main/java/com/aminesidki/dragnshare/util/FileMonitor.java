@@ -7,12 +7,9 @@ public class FileMonitor {
 
     public synchronized void setFile(FileDTO file) throws InterruptedException {
         if(this.file != null){
-            System.out.println("file is not null !");
             wait();
         }
-        System.out.println("file is null !");
         this.file = file;
-        System.out.println("file is not null anymore !");
         notify();
     }
 

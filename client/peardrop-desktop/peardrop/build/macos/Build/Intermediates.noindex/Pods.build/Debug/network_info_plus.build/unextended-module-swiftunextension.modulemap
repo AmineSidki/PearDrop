@@ -1,4 +1,0 @@
-
-module network_info_plus.__Swift {
-  exclude header "network_info_plus-Swift.h"
-}
