@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:peardrop/landingPage.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

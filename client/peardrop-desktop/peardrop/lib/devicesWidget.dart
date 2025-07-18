@@ -24,7 +24,7 @@ class defaultDeviceContainer extends State<DevicesContainer> {
     super.initState();
 
     periodicTimer = Timer.periodic(Duration(seconds: 3), (timer) async {
-      Column column = await callLocalServer(col , context); // ⏳ wait for result
+      Column column = await callLocalServer(col, context); // ⏳ wait for result
 
       if (!mounted) return;
       setState(() {
@@ -67,7 +67,7 @@ Future<void> askForFile(ip, s) async {
   try {
     final url = Uri.parse('http://$ip:8080/receive/$s');
     final response = await http.post(url);
-    print(response.body);
+    receivedFile = response.body;
   } catch (err) {
     throw Exception("Unsuccessful !");
   }
