@@ -6,6 +6,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:network_info_plus/network_info_plus.dart';
+import 'package:peardrop/receiving.dart';
 
 class DevicesContainer extends StatefulWidget {
   @override
@@ -23,7 +24,7 @@ class defaultDeviceContainer extends State<DevicesContainer> {
     super.initState();
 
     periodicTimer = Timer.periodic(Duration(seconds: 3), (timer) async {
-      Column column = await callLocalServer(col); // ⏳ wait for result
+      Column column = await callLocalServer(col , context); // ⏳ wait for result
 
       if (!mounted) return;
       setState(() {
@@ -50,7 +51,7 @@ class defaultDeviceContainer extends State<DevicesContainer> {
 
   @override
   void dispose() {
-    periodicTimer?.cancel(); 
+    periodicTimer?.cancel();
     super.dispose();
   }
 
@@ -67,10 +68,12 @@ Future<void> askForFile(ip, s) async {
     final url = Uri.parse('http://$ip:8080/receive/$s');
     final response = await http.post(url);
     print(response.body);
-  } catch (err) {}
+  } catch (err) {
+    throw Exception("Unsuccessful !");
+  }
 }
 
-Future<Column> callLocalServer(Column col) async {
+Future<Column> callLocalServer(Column col, context) async {
   final info = NetworkInfo();
   final ip = await info.getWifiIP();
 
@@ -86,7 +89,13 @@ Future<Column> callLocalServer(Column col) async {
       print(s);
       devicesButtons.add(
         GestureDetector(
-          onTap: ()=>askForFile(ip, s),
+          onTap: () => {
+            askForFile(ip, s),
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Receiving()),
+            ),
+          },
           child: Container(
             margin: EdgeInsets.only(left: 19, top: 19),
             child: Row(

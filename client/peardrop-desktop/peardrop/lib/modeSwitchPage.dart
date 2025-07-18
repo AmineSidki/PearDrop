@@ -4,6 +4,8 @@ import 'package:peardrop/receivePage.dart';
 import 'package:peardrop/sharePage.dart';
 
 class ModeSwitchPage extends StatelessWidget {
+  static dynamic context = context;
+
   @override
   Widget build(BuildContext context) => _modeSwitchPage(context);
 }
