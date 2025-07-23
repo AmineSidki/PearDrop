@@ -1,0 +1,28 @@
+{
+  "" : {
+    "diagnostics" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/path_provider_foundation-master.dia",
+    "emit-module-dependencies" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/path_provider_foundation-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/path_provider_foundation-master-emit-module.dia",
+    "swift-dependencies" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/path_provider_foundation-master.swiftdeps"
+  },
+  "/Users/aminesidki/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.1/darwin/path_provider_foundation/Sources/path_provider_foundation/PathProviderPlugin.swift" : {
+    "const-values" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/PathProviderPlugin.swiftconstvalues",
+    "dependencies" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/PathProviderPlugin.d",
+    "diagnostics" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/PathProviderPlugin.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/PathProviderPlugin.o",
+    "llvm-bc" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/PathProviderPlugin.bc",
+    "object" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/PathProviderPlugin.o",
+    "swift-dependencies" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/PathProviderPlugin.swiftdeps",
+    "swiftmodule" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/PathProviderPlugin~partial.swiftmodule"
+  },
+  "/Users/aminesidki/.pub-cache/hosted/pub.dev/path_provider_foundation-2.4.1/darwin/path_provider_foundation/Sources/path_provider_foundation/messages.g.swift" : {
+    "const-values" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/messages.g.swiftconstvalues",
+    "dependencies" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/messages.g.d",
+    "diagnostics" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/messages.g.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/messages.g.o",
+    "llvm-bc" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/messages.g.bc",
+    "object" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/messages.g.o",
+    "swift-dependencies" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/messages.g.swiftdeps",
+    "swiftmodule" : "/Users/aminesidki/Drag-nShare/client/peardrop-desktop/peardrop/build/macos/Build/Intermediates.noindex/Pods.build/Debug/path_provider_foundation.build/Objects-normal/x86_64/messages.g~partial.swiftmodule"
+  }
+}

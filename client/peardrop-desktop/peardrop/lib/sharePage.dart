@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:core';
 import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
@@ -130,7 +132,7 @@ class _sharePage extends State<Sharepage> {
   }
 }
 
-Future<void> postRequest(dynamic jsonMap) async {
+void postRequest(dynamic jsonMap) async {
   final ip = await info.getWifiIP();
   try {
     final url = Uri.parse('http://$ip:8080/share/file/receive');
