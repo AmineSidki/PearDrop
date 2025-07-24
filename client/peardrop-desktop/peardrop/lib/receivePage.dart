@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:network_info_plus/network_info_plus.dart';
 import 'package:peardrop/devicesWidget.dart';
+import 'package:peardrop/modeSwitchPage.dart';
 
 class Receivepage extends StatefulWidget {
   @override
   State<Receivepage> createState() => defaultState();
 }
 
+final NetworkInfo info = NetworkInfo();
+
 class defaultState extends State<Receivepage> {
+  @override
+  void initState()  {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 72,
         leading: GestureDetector(
-          onTap: () {
+          onTap: () async {
+             String? ip = await info.getWifiIP();
+            stopServer(ip);
             Navigator.pop(context);
           },
           child: Container(

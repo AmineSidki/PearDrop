@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:network_info_plus/network_info_plus.dart';
 import 'package:peardrop/receivePage.dart';
 import 'package:peardrop/sharePage.dart';
+import 'package:peardrop/sharing.dart';
 
 class Startserver extends StatefulWidget {
   var mode;
@@ -17,8 +18,8 @@ final info = NetworkInfo();
 
 Future<String> checkAlive(ip) async {
   try {
-    final url = Uri.parse('http://$ip:8080/health/alive');
-    final response = await http.post(url);
+    final url = Uri.parse('http://$ip:8080/health/isalive');
+    final response = await http.get(url);
     return response.body;
   } catch (err) {
     return '';
@@ -35,12 +36,12 @@ class _createState extends State<Startserver> {
     Timer.periodic(Duration(seconds: 1), (timer) async {
       final ip = await info.getWifiIP();
       String res = await checkAlive(ip);
-      if (res.isNotEmpty) {
+      if (res == 'Hello') {
         switch (mode) {
           case 's':
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => Sharepage()),
+              MaterialPageRoute(builder: (context) => Sharing()),
             );
             timer.cancel();
             break;
@@ -69,7 +70,45 @@ class _createState extends State<Startserver> {
         elevation: 0.0,
         backgroundColor: Colors.white,
       ),
-      body: Container(child: Text("Starting server ..")),
+      body: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(color: Colors.white),
+        child: Container(
+          height: 250,
+          width: 600,
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(46, 86, 86, 86),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Starting server",
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Roboto',
+                  fontSize: 50,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20,),
+              CircularProgressIndicator(
+                backgroundColor: const Color.fromARGB(7, 158, 158, 158),
+                strokeWidth: 10.0,
+                constraints: BoxConstraints(
+                  minWidth: 70,
+                  maxWidth: 70,
+                  minHeight: 70,
+                  maxHeight: 70,
+                ),
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

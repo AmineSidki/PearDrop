@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:http/http.dart' as http;
+import 'package:network_info_plus/network_info_plus.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,6 +11,15 @@ import 'package:peardrop/receivePage.dart';
 import 'package:peardrop/sharePage.dart';
 import 'package:peardrop/startServer.dart';
 
+var process;
+
+void stopServer(ip) async {
+  try {
+    final url = Uri.parse('http://$ip:8080/health/kill');
+    await http.get(url);
+  } catch (err) {}
+}
+
 class ModeSwitchPage extends StatefulWidget {
   static dynamic context = context;
 
@@ -16,35 +27,36 @@ class ModeSwitchPage extends StatefulWidget {
   State<ModeSwitchPage> createState() => _initState();
 }
 
-Future<void> startServer(String mode, process) async {
+Future<Process?> startServer(String mode) async {
   try {
-    final appDocDir = await getApplicationDocumentsDirectory(); 
+    final appDocDir = await getApplicationDocumentsDirectory();
     print(appDocDir);
     final jarPath = '${appDocDir.path}/peardropServer.jar';
-    process = await Process.start('java', [
+    Process process = await Process.start('java', [
       '-jar',
       jarPath,
       '--mode=$mode',
     ], runInShell: true);
 
+    process.stdout.transform(utf8.decoder).forEach(print);
+    return process;
   } catch (err) {
     print(err);
+    return null;
   }
 }
 
-void stopServer(Process process) {
-  process.kill();
+final NetworkInfo info = NetworkInfo();
+
+void pIP() async {
+  print(await info.getWifiIP());
 }
 
 class _initState extends State<ModeSwitchPage> {
-  static var process;
-
   @override
   void initState() {
     super.initState();
-    if (process != null) {
-      stopServer(process);
-    }
+    pIP();
   }
 
   @override
@@ -83,7 +95,7 @@ class _initState extends State<ModeSwitchPage> {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    await startServer('r', process);
+                    process = await startServer('r');
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Startserver('r')),
@@ -140,10 +152,9 @@ class _initState extends State<ModeSwitchPage> {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    await startServer('s', process);
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Startserver('s')),
+                      MaterialPageRoute(builder: (context) => Sharepage()),
                     );
                   },
                   child: Container(
