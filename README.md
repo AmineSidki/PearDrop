@@ -7,17 +7,8 @@
   "A nearby file-sharing app ."
 </p>
 
-<a href="https://github.com/AmineSidki/PearDrop/graphs/contributors">
-  <p align="center">
-  <img src="https://contrib.rocks/image?repo=AmineSidki/PearDrop" /><br>
-    AmineSidki
-  </p>
-</a>
-
 >[!TIP]
->To start the server in :   
->- **Sharing Mode** : ```./mvnw spring-boot:run -Dspring-boot.run.arguments="--mode=s"```
->- **Receiving Mode** : ```./mvnw spring-boot:run -Dspring-boot.run.arguments="--mode=r"```
+> All you need to run the application is the Flutter SDK available here : https://docs.flutter.dev/get-started/install
 
 ## Architecture For PC   
 <img src="img/Architecture.png/">
