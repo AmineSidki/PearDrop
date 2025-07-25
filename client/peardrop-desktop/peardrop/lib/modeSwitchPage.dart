@@ -38,7 +38,7 @@ Future<Process?> startServer(String mode) async {
       '--mode=$mode',
     ], runInShell: true);
 
-    process.stdout.transform(utf8.decoder).forEach(print);
+    //process.stdout.transform(utf8.decoder).forEach(print);
     return process;
   } catch (err) {
     print(err);

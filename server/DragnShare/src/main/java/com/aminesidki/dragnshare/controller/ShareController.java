@@ -38,7 +38,8 @@ public class ShareController{
     public FileDTO sendFile(){
         if(writer != null){
             return file;
+        }else{
+            throw new RuntimeException("Invalid Route !");
         }
-        throw new RuntimeException("Invalid Route !");
     }
 }

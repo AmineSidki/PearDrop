@@ -12,7 +12,7 @@ final NetworkInfo info = NetworkInfo();
 
 class defaultState extends State<Receivepage> {
   @override
-  void initState()  {
+  void initState() {
     super.initState();
   }
 
@@ -23,7 +23,8 @@ class defaultState extends State<Receivepage> {
         toolbarHeight: 72,
         leading: GestureDetector(
           onTap: () async {
-             String? ip = await info.getWifiIP();
+            periodicTimer?.cancel();
+            String? ip = await info.getWifiIP();
             stopServer(ip);
             Navigator.pop(context);
           },

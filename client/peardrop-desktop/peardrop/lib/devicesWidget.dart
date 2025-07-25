@@ -24,7 +24,7 @@ class defaultDeviceContainer extends State<DevicesContainer> {
     super.initState();
 
     periodicTimer = Timer.periodic(Duration(seconds: 3), (timer) async {
-      Column column = await callLocalServer(col, context); // ⏳ wait for result
+      Column column = await callLocalServer(col, context);
 
       if (!mounted) return;
       setState(() {
@@ -63,8 +63,6 @@ class defaultDeviceContainer extends State<DevicesContainer> {
 
 final info = NetworkInfo();
 
-
-
 Future<Column> callLocalServer(Column col, context) async {
   final info = NetworkInfo();
   final ip = await info.getWifiIP();
@@ -84,7 +82,7 @@ Future<Column> callLocalServer(Column col, context) async {
           onTap: () => {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Receiving(ip , s)),
+              MaterialPageRoute(builder: (context) => Receiving(s , ip)),
             ),
           },
           child: Container(

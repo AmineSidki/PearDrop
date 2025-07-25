@@ -33,13 +33,20 @@ Future<File> createLocalFile(String filename, Int8List content) async {
 Future<bool> askForFile(ip, s) async {
   try {
     final url = Uri.parse('http://$ip:8080/receive/$s');
+    print(url.toString());
     final response = await http.post(url);
-    receivedFile = response.body;
-    return true;
+    if (response.body != 'null') {
+      receivedFile = response.body;
+      return true;
+    }
+    return false;
   } catch (err) {
+    print("An error occurred during the request ! : $err");
     return false;
   }
 }
+
+Timer? someTimer;
 
 class _receiving extends State<Receiving> {
   dynamic s, ip;
@@ -48,8 +55,9 @@ class _receiving extends State<Receiving> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(Duration(seconds: 1), (timer) async {
+    someTimer = Timer.periodic(Duration(seconds: 1), (someTimer) async {
       if ((await askForFile(ip, s))) {
+        print(receivedFile);
         FileDTO fileDTO = FileDTO.fromJson(jsonDecode(receivedFile));
         File created = await createLocalFile(
           fileDTO.fileName,
@@ -59,8 +67,10 @@ class _receiving extends State<Receiving> {
         setState(() {
           filepath = created.path;
         });
-        timer.cancel();
-      } else {}
+        someTimer.cancel();
+      } else {
+        print("Returned false !");
+      }
     });
   }
 
@@ -77,11 +87,26 @@ class _receiving extends State<Receiving> {
           shadowColor: Colors.black,
           elevation: 0.0,
           backgroundColor: Colors.white,
+          leading: GestureDetector(
+            onTap: () async {
+              someTimer?.cancel();
+              Navigator.pop(context);
+            },
+            child: Container(
+              margin: EdgeInsets.only(left: 10.5, top: 14, bottom: 13),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 217, 217, 217),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              alignment: Alignment.center,
+              child: Text(""),
+            ),
+          ),
         ),
         body: Container(child: Text(filepath)),
       );
     } catch (err) {
-      print(err);
+      print("An error occurred during the building of the widget ! :$err");
       return Scaffold(
         appBar: AppBar(
           toolbarHeight: 72,
