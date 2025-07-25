@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -29,13 +30,14 @@ Future<File> createLocalFile(String filename, Int8List content) async {
   return file.writeAsBytes(content);
 }
 
-Future<void> askForFile(ip, s) async {
+Future<bool> askForFile(ip, s) async {
   try {
     final url = Uri.parse('http://$ip:8080/receive/$s');
     final response = await http.post(url);
     receivedFile = response.body;
+    return true;
   } catch (err) {
-    throw Exception("Unsuccessful !");
+    return false;
   }
 }
 
@@ -44,15 +46,27 @@ class _receiving extends State<Receiving> {
   _receiving(this.s, this.ip);
 
   @override
-  void initState() async {
-    await askForFile(ip, s);
+  void initState() {
+    super.initState();
+    Timer.periodic(Duration(seconds: 1), (timer) async {
+      if ((await askForFile(ip, s))) {
+        FileDTO fileDTO = FileDTO.fromJson(jsonDecode(receivedFile));
+        File created = await createLocalFile(
+          fileDTO.fileName,
+          fileDTO.fileBytes,
+        );
+
+        setState(() {
+          filepath = created.path;
+        });
+        timer.cancel();
+      } else {}
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     try {
-      FileDTO file = FileDTO.fromJson(jsonDecode(receivedFile));
-      createLocalFile(file.fileName, file.fileBytes);
       return Scaffold(
         appBar: AppBar(
           toolbarHeight: 72,

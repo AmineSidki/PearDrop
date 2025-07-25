@@ -1,6 +1,7 @@
 package com.aminesidki.dragnshare.util;
 
 import com.aminesidki.dragnshare.controller.ReceiveController;
+import com.aminesidki.dragnshare.controller.ShareController;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ public class ModeSwitch implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if(mode.equalsIgnoreCase("s")){
-            new UdpDiscoveryWriter().run();
+            ShareController.writer = new UdpDiscoveryWriter();
         }else if(mode.equalsIgnoreCase("r")){
             Set<String> devices = new HashSet<>();
             FileMonitor monitor = new FileMonitor();

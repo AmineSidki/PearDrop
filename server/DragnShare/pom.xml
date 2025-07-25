@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.aminesidki</groupId>
     <artifactId>DragnShare</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <name>DragnShare</name>
     <description>DragnShare</description>
     <url/>
